@@ -9,6 +9,15 @@ _id_counter = count(1)
 tasks = {}
 
 
+@app.get("/")
+def index():
+    return jsonify(
+        service="flask-cicd-demo",
+        status="ok",
+        endpoints=["/health", "/tasks", "/tasks/<id>"],
+    )
+
+
 @app.get("/health")
 def health():
     return jsonify(status="ok")
